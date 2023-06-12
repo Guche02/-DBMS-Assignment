@@ -266,21 +266,3 @@ WHERE company_name = 'Small Bank Corporation';
 
 
 
-SELECT * FROM tbl_Employee JOIN tbl_Works 
-ON tbl_Employee.employee_name = tbl_Works.employee_name
-WHERE company_name = 'First Bank Corporation';
-
-SELECT * FROM tbl_Employee CROSS JOIN tbl_Works;
-
-SELECT * FROM tbl_Employee INNER JOIN tbl_Company 
-ON tbl_Employee.city = tbl_Company.city
-WHERE tbl_Employee.city = tbl_Company.city;
-
-INSERT INTO tbl_Employee 
-VALUES ('ARNAB', '111112', 'Colorado');
-
-INSERT INTO tbl_Company(city)
-VALUES('Colorado');
-
-SELECT * FROM tbl_Works
-GROUP BY company_name;
