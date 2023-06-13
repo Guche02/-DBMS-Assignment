@@ -192,15 +192,12 @@ AND  tbl_works.company_name = tbl_Company.company_name
 AND  tbl_Employee.employee_name = tbl_Works.employee_name
 
 --2.e) Employees who live in same cities and streets as do their managers
---Confused
-SELECT employee_name FROM tbl_employee 
-WHERE city = (SELECT city FROM tbl_employee 
-WHERE employee_name = (SELECT manager_name FROM tbl_manages 
-WHERE employee_name = tbl_employee.employee_name)) 
-AND street = (SELECT street FROM tbl_employee 
-WHERE employee_name = (SELECT manager_name FROM tbl_manages 
-WHERE employee_name = tbl_employee.employee_name));
-
+SELECT s.employee_name,s.city,s.street,e.employee_name AS manager,e.street AS manager street 
+FROM tbl_employee s join tbl_Manages on 
+s.employee_name =tbl_manages.employee_name
+join tbl_employee e on e.employee_name =tbl_manages.manager_name
+where s.city= e.city
+and s.street=e.street
 
 --2.f) Employees who do not work for first bank corporation
 SELECT * FROM tbl_Employee
